@@ -89,7 +89,7 @@ table Date
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Demo\Data\Date.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Source = Csv.Document(File.Contents("C:\Demo\Sales\Data\Date.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {{"Date", type date}, {"Year", Int64.Type}, {"Quarter", Text.Type}, {"Quarter Number", Int64.Type}, {"Month", Text.Type}, {"Month Number", Int64.Type}, {"Day of Week", Text.Type}, {"Day Number", Int64.Type}, {"Week of Year", Int64.Type}, {"Is Weekend", Logical.Type}})
 				in

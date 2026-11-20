@@ -112,7 +112,7 @@ table Store
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Demo\Data\Store.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Source = Csv.Document(File.Contents("C:\Demo\Sales\Data\Store.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {{"Store ID", Int64.Type}, {"Store Name", Text.Type}, {"Store Type", Text.Type}, {"City", Text.Type}, {"State", Text.Type}, {"Region", Text.Type}, {"Country", Text.Type}, {"Open Date", type date}, {"Latitude", Double.Type}, {"Longitude", Double.Type}, {"Square Feet", Int64.Type}})
 				in

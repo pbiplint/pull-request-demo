@@ -169,7 +169,7 @@ table Sales
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Demo\Data\Sales.csv"), [Delimiter=",", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Source = Csv.Document(File.Contents("C:\Demo\Sales\Data\Sales.csv"), [Delimiter=",", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {{"Sale ID", Int64.Type}, {"Sale Date", type date}, {"Product ID", Int64.Type}, {"Customer ID", Int64.Type}, {"Store ID", Int64.Type}, {"Employee ID", Int64.Type}, {"Promotion ID", Int64.Type}, {"Quantity", Int64.Type}, {"Unit Price", Currency.Type}, {"Unit Cost", Currency.Type}, {"Discount Amount", Currency.Type}, {"Total Amount", Currency.Type}, {"Net Amount", Currency.Type}})
 				in

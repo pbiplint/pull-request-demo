@@ -73,7 +73,7 @@ table Employee
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Demo\Data\Employee.csv"), [Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Source = Csv.Document(File.Contents("C:\Demo\Sales\Data\Employee.csv"), [Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {{"Employee ID", Int64.Type}, {"Employee Name", Text.Type}, {"Title", Text.Type}, {"Department", Text.Type}, {"Hire Date", type date}, {"Manager ID", Int64.Type}, {"Region", Text.Type}, {"Email", Text.Type}})
 				in
