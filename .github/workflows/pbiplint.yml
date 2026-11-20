@@ -1,0 +1,18 @@
+name: Lint Power BI
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  security-events: write # for code scanning; drop it and set upload-sarif: false otherwise
+
+jobs:
+  pbiplint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pbiplint/action@v1
+        with:
+          path: Messy Sales Demo.pbip
